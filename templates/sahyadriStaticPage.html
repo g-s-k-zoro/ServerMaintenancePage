@@ -1,0 +1,325 @@
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head><title>
+	Report
+</title><meta /><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" /><meta name="description" /><meta name="author" /><link href="../Content/fontawesome/css/all.min.css" rel="stylesheet" />
+    
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    
+    
+    
+
+    <script src="/Portal/Scripts/jquery-3.3.1.min.js"></script>
+<script src="/Portal/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="/Portal/Scripts/bootstrap.min.js"></script>
+<script src="/Portal/Scripts/fontawesome1.js"></script>
+<script src="/Portal/Scripts/custom.min.js"></script>
+<script src="/Portal/Scripts/sidebar-nav.min.js"></script>
+<script src="/Portal/Scripts/jquery.slimscroll.js"></script>
+<script src="/Portal/Scripts/waves.js"></script>
+<script src="/Portal/Scripts/app.js"></script>
+<script src="/Portal/Scripts/DataTables/jquery.dataTables.js"></script>
+<script src="/Portal/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+<script src="/Portal/Scripts/DataTables/buttons.html5.min.js"></script>
+<script src="/Portal/Scripts/DataTables/dataTables.buttons.min.js"></script>
+<script src="/Portal/Scripts/mastertable/jszip.min.js"></script>
+<script src="/Portal/Scripts/DataTables/dataTables.select.min.js"></script>
+<script src="/Portal/Scripts/DataTables/dataTables.rowGroup.min.js"></script>
+<script src="/Portal/Scripts/DataTables/dataTables.colReorder.min.js"></script>
+<script src="/Portal/Scripts/moment.min.js"></script>
+<script src="/Portal/Scripts/sweetalert2.min.js"></script>
+<script src="/Portal/Scripts/jsrender.min.js"></script>
+<script src="/Portal/Scripts/jquery.slimscroll.min.js"></script>
+<script src="/Portal/Scripts/parsley.min.js"></script>
+<script src="/Portal/Scripts/select2.min.js"></script>
+<script src="/Portal/Scripts/jquery.cookie.js"></script>
+<script src="/Portal/Scripts/aes.js"></script>
+<script src="/Portal/Scripts/aes-min.js"></script>
+<script src="/Portal/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="/Portal/Scripts/jquery.inputmask.bundle.js"></script>
+<link href="/Portal/Content/themes/base/jquery-ui.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/bootstrap.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/sidebar-nav.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/Custom.css" rel="stylesheet"/>
+<link href="/Portal/Content/style.css" rel="stylesheet"/>
+<link href="/Portal/Content/sweetalert2.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/heplers/colors.css" rel="stylesheet"/>
+<link href="/Portal/Content/heplers/utils.css" rel="stylesheet"/>
+<link href="/Portal/Content/heplers/spacing.css" rel="stylesheet"/>
+<link href="/Portal/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/DataTables/css/select.dataTables.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/DataTables/css/rowGroup.bootstrap.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/app.css" rel="stylesheet"/>
+<link href="/Portal/Content/css/select2.min.css" rel="stylesheet"/>
+<link href="/Portal/Content/Portal.css" rel="stylesheet"/>
+<link href="/Portal/Content/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+
+    <style type="text/css">
+        /*Loading Panel CSS*/
+        .spinner {
+            text-align: center;
+            background-color: White;
+            opacity: .8;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            display: table;
+            left: 0px;
+            top: 0px;
+            z-index: 9999;
+            padding-top: 215px;
+        }
+
+            .spinner > div {
+                width: 18px;
+                height: 18px;
+                background-color: #333;
+                border-radius: 100%;
+                display: inline-block;
+                -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+                animation: bouncedelay 1.4s infinite ease-in-out;
+                /* Prevent first frame from flickering when animation starts */
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+            }
+
+            .spinner .bounce1 {
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+
+            .spinner .bounce2 {
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+
+        @-webkit-keyframes bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0.0)
+            }
+
+            40% {
+                -webkit-transform: scale(1.0)
+            }
+        }
+
+        @keyframes bouncedelay {
+            0%, 80%, 100% {
+                transform: scale(0.0);
+                -webkit-transform: scale(0.0);
+            }
+
+            40% {
+                transform: scale(1.0);
+                -webkit-transform: scale(1.0);
+            }
+        }
+    </style>
+    <script type="text/javascript">
+
+         var WebApiUrl = 'https://hmis.sahyadrihospitals.com/PatientPortalAPIService/api/';
+
+        //if (window != window.top) window.top.location.href = window.location.href;
+
+
+        if (navigator.appName == "Netscape") {
+            function changeHashOnLoad() {
+                try {
+                    window.location.href += "#";
+                    setTimeout("changeHashAgain()", "50");
+                } catch (e) { console.log(e); }
+            }
+            function changeHashAgain() {
+                try {
+                    window.location.href += "1";
+                } catch (e) { console.log(e); }
+            }
+            var storedHash = window.location.hash;
+            window.setInterval(function () {
+                if (window.location.hash != storedHash) {
+                    window.location.hash = storedHash;
+                }
+            }, 50);
+            window.onload = changeHashOnLoad();
+        }
+        else {
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 0);
+            window.onunload = function () { null };
+        }
+
+    </script>
+    
+    <style type="text/css">
+        #iframePrint {
+            width: 100%;
+            height: 550px;
+            resize: both;
+        }
+
+        #objPrint {
+            width: 100%;
+            height: 550px;
+            resize: both;
+        }
+
+        .buttonClass {
+            line-height: normal !important;
+            /*font-family:Trebuchet MS;*/
+            padding: 5px 20px;
+            border: 1px solid;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 14px;
+            border-color: #22BBF8;
+            border-radius: 10px;
+            box-shadow: 2px 4px 6px #444;
+            background: #2483BB; /* Old browsers */ /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2MzZDlmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQxJSIgc3RvcC1jb2xvcj0iI2IxYzhlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5OGIwZDkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+            background: -moz-linear-gradient(top, #094E9C 0%, #22BBF8 41%, #094E9C 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#094E9C), color-stop(41%,#22BBF8), color-stop(100%,#094E9C)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #094E9C 0%,#22BBF8 41%,#094E9C 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #094E9C 0%,#22BBF8 41%,#094E9C 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, #094E9C 0%,#22BBF8 41%,#094E9C 100%); /* IE10+ */
+            background: linear-gradient(top, #094E9C 0%,#22BBF8 41%,#094E9C 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#094E9C', endColorstr='#094E9C',GradientType=0 ); /* IE6-8 */
+            /*height: 25px !important;*/
+        }
+
+            .buttonClass:hover {
+                border: 1px solid #000000;
+                color: #ffffff;
+                border-color: #22BBF8;
+                background: #094E9C; /* Old browsers */ /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+                background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlZmNlYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMWRhMzYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+                background: -moz-linear-gradient(top, #094E9C 0%, #22BBF8 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#094E9C), color-stop(100%,#22BBF8)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, #094E9C 0%,#22BBF8 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, #094E9C 0%,#22BBF8 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top, #094E9C 0%,#22BBF8 100%); /* IE10+ */
+                background: linear-gradient(top, #094E9C 0%,#22BBF8 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#094E9C', endColorstr='#22BBF8',GradientType=0 ); /* IE6-8 */
+                /*height: 25px !important;*/
+            }
+    </style>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/fontawesome1.js"></script>
+    <script src="../Scripts/custom.min.js"></script>
+    <script src="../Scripts/sidebar-nav.min.js"></script>
+    <script src="../Scripts/jquery.slimscroll.js"></script>
+    <script src="../Scripts/waves.js"></script>
+    <script src="../Scripts/app.js"></script>
+   
+    <script src="../Scripts/moment.min.js"></script>
+    <script src="../Scripts/sweetalert2.min.js"></script>
+    <script src="../Scripts/jsrender.min.js"></script>
+    <script src="../Scripts/jquery.slimscroll.min.js"></script>
+    <script src="../Scripts/parsley.min.js"></script>
+    <script src="../Scripts/select2.min.js"></script>
+    <script src="../Scripts/jquery.cookie.js"></script>
+    <script src="../Scripts/aes.js"></script>
+    <script src="../Scripts/aes-min.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="../Scripts/jquery.inputmask.bundle.js"></script>
+
+    <script src="../Scripts/Outside/Report.js?637645314230807140"></script>
+</head>
+<body>
+    <form method="post" action="./Report.aspx?PcId=3100&amp;RepId=3200390034003300370030003400" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="7oq1nhDS8S+2NLIFSkXE/Wkf6/khLi50rJRg0GY4kUoqM+rnH1LZrp0foALgeY2eWX1Wrf/KOY5gZ9Ahs/u1RGFPPBuXK7LsoHEaWyViDK8=" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0C204CD0" />
+</div>
+        <div>
+            
+    <div style="padding-left: 0%; padding-right: 0%;">
+        <div class="container-fluid" style="background-color: white; height: 600px;">
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12 EmptyRow_15">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-xs-6" style="text-align: left;">
+                    <img src="../static/admin-text-dark.png" alt="home"
+                        class="light-logo" />
+                </div>
+                <div class="col-md-6 col-lg-6 col-xs-6" style="font-size: 20px; font-weight: bold; text-align: center;">
+                    <p style="color: darkslategrey;font-family:'veranda'">Welcome to Sahyadri Specialty Hospital</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12 EmptyRow_15">
+                </div>
+            </div>  
+            <div class="row" style="color: black; font-size: 16px;">
+                <div class="col-md-2 col-lg-2 col-xs-6" style="font-weight: bold;">
+                </div>
+                <div class="col-md-2 col-lg-2 col-xs-6">
+                    
+                </div>
+                <div class="col-md-2 col-lg-2 col-xs-6" style="font-weight: bold;">
+                    <br/>
+                    <p style="font-family: 'Arial Narrow';text-align:center;">Server Under Maintenance. Please Try Again Later.</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xs-6">
+                </div>
+                <div class="col-md-2 col-lg-2 col-xs-6" style="font-weight: bold;">
+                </div>
+                <div class="col-md-2 col-lg-2 col-xs-6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12 EmptyRow_15">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xs-12" style="text-align: center;">
+                    <br/><br/>
+<!--                     <a id='dwdPdf' download='LabReport.pdf' style="display: none;" />
+ -->                    <a href="https://sahyadrihospital.com/contact-us/contact-us" style="text-decoration: none;" class="buttonClass">CONTACT US</a>
+
+                </div>
+            </div>
+            <div class="row" style="display: none;">
+                <iframe id="iframePrint" style="margin-bottom: 0px; border: 0px;"></iframe>
+
+            </div>
+        </div>
+    </div>
+
+        </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Print_Report('1', '2943704')//]]>
+</script>
+</form>
+    <div class="spinner" style="display: none;">
+        <div class="bounce1">
+        </div>
+        <div class="bounce2">
+        </div>
+        <div class="bounce3">
+        </div>
+    </div>
+    <span id="loadReq" req=""></span>
+</body>
+     <script src="/Portal/Scripts/Common/ajaxcall.js"></script>
+<script src="/Portal/Scripts/Common/Configuration.js"></script>
+<script src="/Portal/Scripts/Common/Common.js"></script>
+
+</html>
